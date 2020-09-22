@@ -19,10 +19,11 @@ public class UserController {
 
     @GetMapping("")
     public List<User> getAllUsers(){
+        System.out.println("123");
         return userRepository.findAll();
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/{userId}")
     public User getByUserId(@PathVariable String userId){
         return userRepository.findById(userId).orElse(new User());
     }
@@ -37,7 +38,7 @@ public class UserController {
         return userRepository.save(user);
     }
 
-    @DeleteMapping("/user/{userId}")
+    @DeleteMapping("/{userId}")
     public String delete(@PathVariable String userId){
         userRepository.deleteById(userId);
         return "delete:"+userId;
